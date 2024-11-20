@@ -1,0 +1,14 @@
+#!/bin/bash
+# ======================================
+# Script Name: listpatients
+# By: CK
+# Date: 11.7.24
+# Purpose: Display list of selected patients from patients.csv file
+# Command Line: listpatients
+# ======================================
+clear
+tput cup 2 20; echo "List of Patients"
+tput cup 3 20; echo "=============================="
+tput cup 5 0;
+awk -F, '{printf "%12-s %12-s %12-s %12-s\n", $1, $2, $3, $4}' patient.csv | sort -k 1 | tr [a-z] [A-Z]
+read anykey

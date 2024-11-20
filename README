@@ -1,0 +1,8 @@
+So far for this Milestone I have updated the counter function in the addpatient
+file. I got the counter to function but I would like to update the script so that
+the counter starts at 2 instead of zero for the next milestone. I also adjusted
+some formatting issues with the spacing in the delete file. I also added some color
+to the main menu. I am still working on getting the scripts for searchp and the 
+delete function to search for the patient's last name in only specific lines and 
+not within the entire file. I will have all remaining updates complete by the 
+final submission next week

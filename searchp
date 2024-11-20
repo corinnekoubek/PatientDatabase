@@ -1,0 +1,20 @@
+#!/bin/bash
+#=======================================================
+# Script Name: searchp
+# By: CK
+# Date: 11.7.24
+# Purpose: Searches for a specified record in the patient.csv file
+# Command line: searchp
+#=======================================================
+patientfile=~/capstone/patient.csv
+clear
+tput cup 5 1
+echo "Enter Last Name: "
+tput cup 5 35
+read lname
+echo
+grep -i $lname $patientfile | tr ',' ' '
+echo
+echo "Press ENTER to Continue..."
+read continue
+

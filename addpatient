@@ -1,0 +1,44 @@
+# =======================================================
+# Script Name: addpatient
+# By: CK
+# Date: 11.7.24
+# Purpose: Add Patients to patient.csv file
+# Command Line: addpatient
+# ======================================================
+trap "rm ~/tmp/* 2> /dev/null; exit" 0 1 2 3
+patientfile=~/capstone/patient.csv
+looptest=y
+while [ $looptest=y ]
+do
+clear
+tput cup 1 4; echo "Add a Patient to the Database"
+tput cup 2 4; echo "=============================="
+tput cup 4 4; echo "First Name:  "
+tput cup 5 4; echo "Last Name : "
+tput cup 6 4; echo "Phone Number : "
+tput cup 7 4; echo "Add Another? (y)es (n)o or (q)uit: "
+tput cup 4 18; read fname
+if [ "$fname" = "q" ]
+	then
+	clear ; exit
+fi
+tput cup 5 18; read lname
+tput cup 6 18; read phonenum
+lnameid="${lname:0:4}"
+fnameid="${fname:0:1}"
+userid="${lnameid}${fnameid}"
+while grep -q "$userid" "$patientfile"; do
+	userid="${lnameid}${fnameid}$((counter))"
+	((counter++))
+done
+if [ "$fname" > "      " ]
+then
+echo "$fname,$lname,$phonenum,$userid" >> $patientfile
+fi
+echo "Thank you for entering new patient information. The patient id is $userid"
+tput cup 12 33; read looptest
+if [ "$looptest" = "q" ]
+then
+clear; exit
+fi
+done
